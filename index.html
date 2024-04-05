@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/65f501c8da.js" crossorigin="anonymous"></script>
+    <style>
+        * {margin:0; padding:0; box-sizing:border-box;}
+        ul {list-style:none;}
+        figure {width:100%;
+                height:100vh;
+                position:relative;
+                overflow:hidden;
+                background:linear-gradient(25deg, violet, pink)}
+
+       /*섹션안에 아티클 8개
+         아티클 안에 -이너- .pic , .txt */
+       /*섹션-플레이어 프레임, 아티클-각각 개별 플레이어*/
+       
+       section {width:20vw;
+                height:65vh;
+                position:absolute;
+                left:50%;
+                top:140%;
+                margin-left:-10vw;
+                margin-top:-32vh;
+                
+                transition:2s;
+                }
+
+    article {width:100%;
+             height:100%;
+             position:absolute;
+             left:0;
+             top:0;
+             background:white;
+             opacity:0.5;
+           
+           
+        }  
+
+        article.on {opacity:1;
+                   transform:scale(1.1)}
+      .inner { width:100%;
+                height:100%;
+                padding:30px;
+            
+              
+        } 
+     
+      .pic {width:100%;
+            height:50%;
+           /*  background-image:url('img/member1.jpg'); */
+            background-repeat:no-repeat;
+            background-size:cover;
+            border-radius:50%;
+           box-shadow:5px 5px 10px red; }
+
+      .txt {width:100%;
+             height:30%;
+             padding-top:100px;
+             text-align:center;
+              }          
+     .txt h2 {margin-bottom:10px;}
+     .txt p {margin-bottom:50px;} 
+     .txt ul {display:flex;
+              justify-content: space-between;} 
+      .txt ul li {cursor:pointer;} 
+      .txt ul li:hover {transform:scale(2)}            
+
+  /* 프리뷰 버튼 만들기 */
+  .btnPrev  {
+           width:60px;
+           height:60px;
+           position:absolute;
+           left:50%;
+           top:50%;
+           transform: translate(-20vw,-50%);
+           cursor:pointer;
+           display:flex;
+           align-items:center; 
+           text-align:left;
+  }   
+   .btnPrev span {
+        font : 11px/1 "arial";
+        color:#fff;
+        opacity:1;
+        transform:translateX(30%);
+        transition:0.5;
+   }
+    .btnPrev::before {
+        content:'';
+        display:block;
+        width:100%;
+        height:1px;
+        background:#fff;
+        position:absolute;
+        top:50%;
+        left:0px;
+        transform-origin:left center;
+        transform:rotate(-180deg);
+        transition:0.5s;
+    }
+
+    .btnPrev::after {
+        content:'';
+        display:block;
+        width:100%;
+        height:1px;
+        background:#fff;
+        position:absolute;
+        bottom:50%;
+        left:0px;
+        transform-origin:left center;
+        transform:rotate(180deg);
+        transition:0.5s;
+    }
+
+    .btnPrev:hover span {
+        opacity:0;
+        transform:translateX(100%);
+    }
+    .btnPrev:hover::before {
+          transform:rotate(-30deg);
+    }
+
+    .btnPrev:hover::after {
+          transform:rotate(30deg);
+    }
+     /* 프리뷰끝*/
+      /* 넥스트 버튼 만들기 */
+      .btnNext  {
+           width:60px;
+           height:60px;
+           position:absolute;
+           right:50%;
+           top:50%;
+           transform: translate(20vw,-50%);
+           cursor:pointer;
+           display:flex;
+           align-items:center; 
+           text-align:right;
+  }   
+   .btnNext span {
+        font : 11px/1 "arial";
+        color:#fff;
+        opacity:1;
+        transform:translateX(-30%);
+        transition:0.5;
+   }
+    .btnNext::before {
+        content:'';
+        display:block;
+        width:100%;
+        height:1px;
+        background:#fff;
+        position:absolute;
+        top:50%;
+        left:0px;
+        transform-origin:right center;
+        transform:rotate(180deg);
+        transition:0.5s;
+    }
+
+    .btnNext::after {
+        content:'';
+        display:block;
+        width:100%;
+        height:1px;
+        background:#fff;
+        position:absolute;
+        bottom:50%;
+        left:0px;
+        transform-origin:right center;
+        transform:rotate(-180deg);
+        transition:0.5s;
+    }
+
+    .btnNext:hover span {
+        opacity:0;
+        transform:translateX(-100%);
+    }
+    .btnNext:hover::before {
+          transform:rotate(30deg);
+    }
+
+    .btnNext:hover::after {
+          transform:rotate(-30deg);
+    }
+       /*넥스트끝 */
+
+    </style>
+</head>
+<body>
+    <figure>
+       <section>
+         <article>
+            <div class="inner">
+                <div class="pic"></div>
+                <div class="txt">
+                    <h2>음악제목</h2>
+                    <p>음악 설명</p>
+                    <ul>
+                        <li class="pause">
+                            <i class="fas fa-pause"></i>
+                        </li>
+                        <li class="play">
+                            <i class="fas fa-play"></i>
+                        </li>
+                        <li class="load">
+                            <i class="fas fa-redo-alt"></i>
+                        </li>
+                    </ul>
+                    <audio src="music/Blizzards.mp3"></audio>
+                </div>
+            </div>
+         </article>
+         <article>
+            <div class="inner">
+                <div class="pic"></div>
+                <div class="txt">
+                    <h2>음악제목2</h2>
+                    <p>음악 설명2</p>
+                    <ul>
+                        <li class="pause">
+                            <i class="fas fa-pause"></i>
+                        </li>
+                        <li class="play">
+                            <i class="fas fa-play"></i>
+                        </li>
+                        <li class="load">
+                            <i class="fas fa-redo-alt"></i>
+                        </li>
+                    </ul>
+                    <audio src="music/Calm.mp3"></audio>
+                </div>
+            </div>
+         </article>
+         <article>
+            <div class="inner">
+                <div class="pic"></div>
+                <div class="txt">
+                    <h2>음악제목3</h2>
+                    <p>음악 설명3</p>
+                    <ul>
+                        <li class="pause">
+                            <i class="fas fa-pause"></i>
+                        </li>
+                        <li class="play">
+                            <i class="fas fa-play"></i>
+                        </li>
+                        <li class="load">
+                            <i class="fas fa-redo-alt"></i>
+                        </li>
+                    </ul>
+                    <audio src="music/Dusty_Road.mp3"></audio>
+                </div>
+            </div>
+         </article>
+         <article>
+            <div class="inner">
+                <div class="pic"></div>
+                <div class="txt">
+                    <h2>음악제목4</h2>
+                    <p>음악 설명4</p>
+                    <ul>
+                        <li class="pause">
+                            <i class="fas fa-pause"></i>
+                        </li>
+                        <li class="play">
+                            <i class="fas fa-play"></i>
+                        </li>
+                        <li class="load">
+                            <i class="fas fa-redo-alt"></i>
+                        </li>
+                    </ul>
+                    <audio src="music/Escape.mp3"></audio>
+                </div>
+            </div>
+         </article>
+         <article>
+            <div class="inner">
+                <div class="pic"></div>
+                <div class="txt">
+                    <h2>음악제목5</h2>
+                    <p>음악 설명5</p>
+                    <ul>
+                        <li class="pause">
+                            <i class="fas fa-pause"></i>
+                        </li>
+                        <li class="play">
+                            <i class="fas fa-play"></i>
+                        </li>
+                        <li class="load">
+                            <i class="fas fa-redo-alt"></i>
+                        </li>
+                    </ul>
+                    <audio src="music/Payday.mp3"></audio>
+                </div>
+            </div>
+         </article>
+         <article>
+            <div class="inner">
+                <div class="pic"></div>
+                <div class="txt">
+                    <h2>음악제목6</h2>
+                    <p>음악 설명6</p>
+                    <ul>
+                        <li class="pause">
+                            <i class="fas fa-pause"></i>
+                        </li>
+                        <li class="play">
+                            <i class="fas fa-play"></i>
+                        </li>
+                        <li class="load">
+                            <i class="fas fa-redo-alt"></i>
+                        </li>
+                    </ul>
+                    <audio src="music/Retreat.mp3"></audio>
+                </div>
+            </div>
+         </article>
+         <article>
+            <div class="inner">
+                <div class="pic"></div>
+                <div class="txt">
+                    <h2>음악제목7</h2>
+                    <p>음악 설명7</p>
+                    <ul>
+                        <li class="pause">
+                            <i class="fas fa-pause"></i>
+                        </li>
+                        <li class="play">
+                            <i class="fas fa-play"></i>
+                        </li>
+                        <li class="load">
+                            <i class="fas fa-redo-alt"></i>
+                        </li>
+                    </ul>
+                    <audio src="music/Seasonal.mp3"></audio>
+                </div>
+            </div>
+         </article>
+         <article>
+            <div class="inner">
+                <div class="pic"></div>
+                <div class="txt">
+                    <h2>음악제목8</h2>
+                    <p>음악 설명8</p>
+                    <ul>
+                        <li class="pause">
+                            <i class="fas fa-pause"></i>
+                        </li>
+                        <li class="play">
+                            <i class="fas fa-play"></i>
+                        </li>
+                        <li class="load">
+                            <i class="fas fa-redo-alt"></i>
+                        </li>
+                    </ul>
+                    <audio src="music/Vespers.mp3"></audio>
+                </div>
+            </div>
+         </article>
+       </section>
+       <div class="btnPrev">
+           <span>PREV MUSIC</span>
+       </div>
+       <div class="btnNext">
+           <span> NEXT MUSIC</span> 
+       </div>
+
+    </figure>
+    <script>
+  /*아티클 360/8:45도 회전하기
+    .pic 순서대로 배경이미지 깔기
+    각버튼에 오디어 제어하기  */
+
+const lists = document.querySelectorAll('article');
+const k=45;  /*360/8 =45*/
+let i=0;
+let num = 1;
+
+   for (let el of lists) {
+       let pic = el.querySelector('.pic');
+       el.style.transform = `rotate(${k* i}deg) translateY(-100vh)`;
+       pic.style.backgroundImage = `url(img/member${i+1}.jpg)`;
+       i++; 
+      
+
+  /*아티클에서 버튼찾아서 오디오 제어하기 */
+  let pause = el.querySelector('.pause');
+  let play =el.querySelector('.play');
+  let load =el.querySelector('.load')
+
+  play.addEventListener('click', (e)=>{
+     e.currentTarget.closest('article').querySelector('audio').play();   
+      });
+
+     pause.addEventListener('click', (e)=>{
+     e.currentTarget.closest('article').querySelector('audio').pause();   
+      });  
+      
+      load.addEventListener('click', (e)=>{
+     e.currentTarget.closest('article').querySelector('audio').load();
+     e.currentTarget.closest('article').querySelector('audio').play();   
+      });  
+
+
+   }
+    /*프리브버튼, 넥스트 버튼을 누르면 45도씩 섹션이 회전*/
+
+  const section = document.querySelector('section');
+  const Prev= document.querySelector('.btnPrev');
+  const Next= document.querySelector('.btnNext');
+
+    Next.addEventListener('click', ()=>{
+        section.style.transform=`rotate(${num*45}deg)`;
+        num++
+      
+    })
+    Prev.addEventListener('click', ()=>{
+        
+        section.style.transform=`rotate(${num*-45}deg)`;
+        num--
+    })
+
+    </script>
+</body>
+</html>
